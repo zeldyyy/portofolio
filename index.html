@@ -1,14 +1,189 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofolio</title>
+    <title>Zeldy | Portfolio - Creative Developer</title>
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container navbar-content">
+            <a href="#" class="logo">ZEL<span>.</span></a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
 
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero-section">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <h1 class="reveal">Hello, I'm <span class="text-gradient">Zeldy</span></h1>
+                    <p class="reveal-delay">Creative Developer specialized in building premium digital experiences.</p>
+                    <div class="hero-btns reveal-delay-2">
+                        <a href="#projects" class="btn btn-primary">View My Work</a>
+                        <a href="#contact" class="btn btn-outline">Contact Me</a>
+                    </div>
+                </div>
+            </div>
+            <!-- About Section -->
+            <section id="about" class="about-section">
+                <div class="container">
+                    <div class="about-grid">
+                        <div class="about-text reveal">
+                            <h2 class="section-title">About <span class="text-gradient">Me</span></h2>
+                            <p>I am a passionate developer with a keen eye for design. I believe that every digital
+                                product
+                                should not only function flawlessly but also look stunning.</p>
+                            <p>With experience in modern web technologies, I transform complex ideas into elegant,
+                                user-centric solutions.</p>
+                        </div>
+                        <div class="about-stats reveal-delay">
+                            <div class="stat-card glass">
+                                <h3>5+</h3>
+                                <p>Years Experience</p>
+                            </div>
+                            <div class="stat-card glass">
+                                <h3>50+</h3>
+                                <p>Projects Done</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section id="skills" class="skills-section">
+                <div class="container">
+                    <h2 class="section-title reveal">My <span class="text-gradient">Skills</span></h2>
+                    <div class="skills-grid">
+                        <div class="skill-item glass reveal">
+                            <i class="fab fa-html5"></i>
+                            <span>HTML5</span>
+                        </div>
+                        <div class="skill-item glass reveal-delay">
+                            <i class="fab fa-css3-alt"></i>
+                            <span>CSS3</span>
+                        </div>
+                        <div class="skill-item glass reveal-delay-2">
+                            <i class="fab fa-js"></i>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="skill-item glass reveal">
+                            <i class="fab fa-react"></i>
+                            <span>React</span>
+                        </div>
+                        <div class="skill-item glass reveal-delay">
+                            <i class="fab fa-node-js"></i>
+                            <span>Node.js</span>
+                        </div>
+                        <div class="skill-item glass reveal-delay-2">
+                            <i class="fab fa-python"></i>
+                            <span>Python</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Projects Section -->
+                <section id="projects" class="projects-section">
+                    <div class="container">
+                        <h2 class="section-title reveal">Featured <span class="text-gradient">Projects</span></h2>
+                        <div class="projects-grid">
+                            <div class="project-card glass reveal">
+                                <div class="project-img">
+                                    <img src="project1.png" alt="Project 1">
+                                </div>
+                                <div class="project-info">
+                                    <h3>Analytics Dashboard</h3>
+                                    <p>Premium data visualization platform with real-time analytics.</p>
+                                    <div class="project-tags">
+                                        <span>React</span>
+                                        <span>D3.js</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-card glass reveal-delay">
+                                <div class="project-img">
+                                    <img src="project2.png" alt="Project 2">
+                                </div>
+                                <div class="project-info">
+                                    <h3>Artistic Portfolio</h3>
+                                    <p>Minimalist photography showcase with elegant interactions.</p>
+                                    <div class="project-tags">
+                                        <span>Vue.js</span>
+                                        <span>GSAP</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Contact Section -->
+                <section id="contact" class="contact-section">
+                    <div class="container">
+                        <div class="contact-grid">
+                            <div class="contact-info reveal">
+                                <h2 class="section-title">Get In <span class="text-gradient">Touch</span></h2>
+                                <p>Interested in working together? Feel free to reach out!</p>
+                                <div class="contact-methods">
+                                    <div class="method glass">
+                                        <i class="fas fa-envelope"></i>
+                                        <span>hello@zeldy.com</span>
+                                    </div>
+                                    <div class="method glass">
+                                        <i class="fab fa-linkedin"></i>
+                                        <span>linkedin.com/in/zeldy</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <form class="contact-form glass reveal-delay">
+                                <div class="form-group">
+                                    <input type="text" placeholder="Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" placeholder="Email" required>
+                                </div>
+                                <div class="form-group">
+                                    <textarea placeholder="Message" rows="5" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2026 ZEL. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
 </body>
 
 </html>
