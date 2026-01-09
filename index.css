@@ -496,6 +496,11 @@ nav.scrolled {
     filter: blur(100px);
 }
 
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
 .hero-content h1 {
     font-size: 5rem;
     line-height: 1.1;
@@ -783,6 +788,309 @@ footer {
 .social-links a:hover {
     color: var(--primary);
     transform: translateY(-3px);
+}
+
+/* Meteor Effect */
+.meteor-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.meteor {
+    position: absolute;
+    width: 2px;
+    height: 150px;
+    background: linear-gradient(to bottom, transparent, #10b981);
+    opacity: 0;
+    transform: rotate(45deg);
+    filter: drop-shadow(0 0 10px #10b981);
+    animation: meteor-fall linear infinite;
+}
+
+@keyframes meteor-fall {
+    0% {
+        transform: translate(0, -200px) rotate(45deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(500px, 100vh) rotate(45deg);
+        opacity: 0;
+    }
+}
+
+/* Lightning & Boom Animation */
+.animation-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    max-width: 800px;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.lightning-container {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    display: flex;
+    transform: translateY(-50%);
+}
+
+.lightning {
+    position: absolute;
+    display: block;
+    height: 12px;
+    width: 12px;
+    border-radius: 12px;
+    transform-origin: 6px 6px;
+    animation-name: woosh;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(0.445, 0.050, 0.550, 0.950);
+    animation-direction: alternate;
+}
+
+.lightning.white {
+    background-color: white;
+    box-shadow: 0px 50px 50px 0px rgba(255, 255, 255, 0.3);
+}
+
+.lightning.red {
+    background-color: #fc7171;
+    box-shadow: 0px 50px 50px 0px rgba(252, 113, 113, 0.3);
+    animation-delay: 0.2s;
+}
+
+.boom-container {
+    position: absolute;
+    display: flex;
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    align-items: center;
+    transform: translateY(-50%);
+    left: 200px;
+    top: -145px;
+}
+
+.boom-container.second {
+    left: 485px;
+    top: 155px;
+}
+
+.boom-container .shape {
+    display: inline-block;
+    position: relative;
+    opacity: 0;
+    transform-origin: center center;
+}
+
+.boom-container .shape.triangle {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    transform-origin: 50% 80%;
+    animation-duration: 3s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: infinite;
+    margin-left: -15px;
+    border-width: 0 2.5px 5px 2.5px;
+    border-color: transparent transparent #42e599 transparent;
+    animation-name: boom-triangle;
+}
+
+.boom-container .shape.triangle.big {
+    margin-left: -25px;
+    border-width: 0 5px 10px 5px;
+    border-color: transparent transparent #fade28 transparent;
+    animation-name: boom-triangle-big;
+}
+
+.boom-container .shape.disc {
+    width: 8px;
+    height: 8px;
+    border-radius: 100%;
+    background-color: #d15ff4;
+    animation-name: boom-disc;
+    animation-duration: 3s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: infinite;
+}
+
+.boom-container .shape.circle {
+    width: 20px;
+    height: 20px;
+    animation-name: boom-circle;
+    animation-duration: 3s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: infinite;
+    border-radius: 100%;
+    margin-left: -30px;
+}
+
+.boom-container .shape.circle.white {
+    border: 1px solid white;
+}
+
+.boom-container .shape.circle.big {
+    width: 40px;
+    height: 40px;
+    margin-left: 0px;
+}
+
+.boom-container .shape.circle.big.white {
+    border: 2px solid white;
+}
+
+.boom-container .shape.triangle,
+.boom-container .shape.circle,
+.boom-container .shape.circle.big,
+.boom-container .shape.disc {
+    animation-delay: .38s;
+}
+
+.boom-container .shape.circle {
+    animation-delay: 0.6s;
+}
+
+.boom-container.second .shape.triangle,
+.boom-container.second .shape.circle,
+.boom-container.second .shape.circle.big,
+.boom-container.second .shape.disc {
+    animation-delay: 1.9s;
+}
+
+.boom-container.second .shape.circle {
+    animation-delay: 2.15s;
+}
+
+@keyframes woosh {
+    0% {
+        width: 12px;
+        transform: translate(0px, 0px) rotate(-35deg);
+    }
+
+    15% {
+        width: 50px;
+    }
+
+    30% {
+        width: 12px;
+        transform: translate(214px, -150px) rotate(-35deg);
+    }
+
+    30.1% {
+        transform: translate(214px, -150px) rotate(46deg);
+    }
+
+    50% {
+        width: 110px;
+    }
+
+    70% {
+        width: 12px;
+        transform: translate(500px, 150px) rotate(46deg);
+    }
+
+    70.1% {
+        transform: translate(500px, 150px) rotate(-37deg);
+    }
+
+    85% {
+        width: 50px;
+    }
+
+    100% {
+        width: 12px;
+        transform: translate(700px, 0) rotate(-37deg);
+    }
+}
+
+@keyframes boom-circle {
+    0% {
+        opacity: 0;
+    }
+
+    5% {
+        opacity: 1;
+    }
+
+    30% {
+        opacity: 0;
+        transform: scale(3);
+    }
+
+    100% {}
+}
+
+@keyframes boom-triangle-big {
+    0% {
+        opacity: 0;
+    }
+
+    5% {
+        opacity: 1;
+    }
+
+    40% {
+        opacity: 0;
+        transform: scale(2.5) translate(50px, -50px) rotate(360deg);
+    }
+
+    100% {}
+}
+
+@keyframes boom-triangle {
+    0% {
+        opacity: 0;
+    }
+
+    5% {
+        opacity: 1;
+    }
+
+    30% {
+        opacity: 0;
+        transform: scale(3) translate(20px, 40px) rotate(360deg);
+    }
+
+    100% {}
+}
+
+@keyframes boom-disc {
+    0% {
+        opacity: 0;
+    }
+
+    5% {
+        opacity: 1;
+    }
+
+    40% {
+        opacity: 0;
+        transform: scale(2) translate(-70px, -30px);
+    }
+
+    100% {}
 }
 
 /* Mobile Responsive */
