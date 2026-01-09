@@ -11,6 +11,15 @@
     --glass-border: rgba(255, 255, 255, 0.1);
     --transition-slow: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-fast: all 0.2s ease;
+
+    /* Card Hover Effect Tokens */
+    --card-shine-opacity: .1;
+    --card-shine-gradient: conic-gradient(from 205deg at 50% 50%, rgba(139, 92, 246, 0) 0deg, var(--primary) 25deg, rgba(6, 182, 212, 0.18) 295deg, rgba(139, 92, 246, 0) 360deg);
+    --card-line-color: #2A2B2C;
+    --card-tile-color: rgba(139, 92, 246, 0.05);
+    --card-hover-icon-color: var(--primary);
+    --card-hover-icon-bg: rgba(139, 92, 246, 0.1);
+    --card-hover-icon-border: rgba(139, 92, 246, 0.2);
 }
 
 * {
@@ -99,6 +108,301 @@ body {
 .btn-outline:hover {
     background: var(--primary);
     color: white;
+}
+
+/* Premium Card Hover Effect Base */
+.card-premium {
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow .25s;
+    z-index: 1;
+}
+
+.card-premium::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background-color: var(--bg-card);
+    z-index: -1;
+}
+
+.card-premium .shine {
+    border-radius: inherit;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: opacity .5s;
+    pointer-events: none;
+}
+
+.card-premium .shine:before {
+    content: '';
+    width: 150%;
+    padding-bottom: 150%;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    bottom: 55%;
+    filter: blur(35px);
+    opacity: var(--card-shine-opacity);
+    transform: translateX(-50%);
+    background-image: var(--card-shine-gradient);
+}
+
+.card-premium .background {
+    border-radius: inherit;
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    -webkit-mask-image: radial-gradient(circle at 60% 5%, black 0%, black 15%, transparent 60%);
+    mask-image: radial-gradient(circle at 60% 5%, black 0%, black 15%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.card-premium .background .tiles {
+    opacity: 0;
+    transition: opacity .25s;
+}
+
+.card-premium .background .tiles .tile {
+    position: absolute;
+    background-color: var(--card-tile-color);
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+    opacity: 0;
+}
+
+.card-premium .background .tiles .tile.tile-4,
+.card-premium .background .tiles .tile.tile-6,
+.card-premium .background .tiles .tile.tile-10 {
+    animation-delay: -2s;
+}
+
+.card-premium .background .tiles .tile.tile-3,
+.card-premium .background .tiles .tile.tile-5,
+.card-premium .background .tiles .tile.tile-8 {
+    animation-delay: -4s;
+}
+
+.card-premium .background .tiles .tile.tile-2,
+.card-premium .background .tiles .tile.tile-9 {
+    animation-delay: -6s;
+}
+
+.card-premium .background .tiles .tile-1 {
+    top: 0;
+    left: 0;
+    height: 10%;
+    width: 22.5%;
+}
+
+.card-premium .background .tiles .tile-2 {
+    top: 0;
+    left: 22.5%;
+    height: 10%;
+    width: 27.5%;
+}
+
+.card-premium .background .tiles .tile-3 {
+    top: 0;
+    left: 50%;
+    height: 10%;
+    width: 27.5%;
+}
+
+.card-premium .background .tiles .tile-4 {
+    top: 0;
+    left: 77.5%;
+    height: 10%;
+    width: 22.5%;
+}
+
+.card-premium .background .tiles .tile-5 {
+    top: 10%;
+    left: 0;
+    height: 22.5%;
+    width: 22.5%;
+}
+
+.card-premium .background .tiles .tile-6 {
+    top: 10%;
+    left: 22.5%;
+    height: 22.5%;
+    width: 27.5%;
+}
+
+.card-premium .background .tiles .tile-7 {
+    top: 10%;
+    left: 50%;
+    height: 22.5%;
+    width: 27.5%;
+}
+
+.card-premium .background .tiles .tile-8 {
+    top: 10%;
+    left: 77.5%;
+    height: 22.5%;
+    width: 22.5%;
+}
+
+.card-premium .background .tiles .tile-9 {
+    top: 32.5%;
+    left: 50%;
+    height: 22.5%;
+    width: 27.5%;
+}
+
+.card-premium .background .tiles .tile-10 {
+    top: 32.5%;
+    left: 77.5%;
+    height: 22.5%;
+    width: 22.5%;
+}
+
+@keyframes tile {
+
+    0%,
+    12.5%,
+    100% {
+        opacity: 1;
+    }
+
+    25%,
+    82.5% {
+        opacity: 0;
+    }
+}
+
+.card-premium .background .line {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity .35s;
+}
+
+.card-premium .background .line:before,
+.card-premium .background .line:after {
+    content: '';
+    position: absolute;
+    background-color: var(--card-line-color);
+    transition: transform .35s;
+}
+
+.card-premium .background .line:before {
+    left: 0;
+    right: 0;
+    height: 1px;
+    transform-origin: 0 50%;
+    transform: scaleX(0);
+}
+
+.card-premium .background .line:after {
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    transform-origin: 50% 0;
+    transform: scaleY(0);
+}
+
+.card-premium .background .line-1:before {
+    top: 10%;
+}
+
+.card-premium .background .line-1:after {
+    left: 22.5%;
+}
+
+.card-premium .background .line-1:before,
+.card-premium .background .line-1:after {
+    transition-delay: .3s;
+}
+
+.card-premium .background .line-2:before {
+    top: 32.5%;
+}
+
+.card-premium .background .line-2:after {
+    left: 50%;
+}
+
+.card-premium .background .line-2:before,
+.card-premium .background .line-2:after {
+    transition-delay: .15s;
+}
+
+.card-premium .background .line-3:before {
+    top: 55%;
+}
+
+.card-premium .background .line-3:after {
+    right: 22.5%;
+}
+
+/* Hover States for Premium Cards */
+.card-premium:hover {
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.04), 0px 15px 25px rgba(0, 0, 0, 0.3), 0 0 0 1px var(--glass-border);
+}
+
+.card-premium:hover .shine {
+    opacity: 1;
+    transition-duration: .5s;
+    transition-delay: 0s;
+}
+
+.card-premium:hover .background .tiles {
+    opacity: 1;
+    transition-delay: .25s;
+}
+
+.card-premium:hover .background .tiles .tile {
+    animation-name: tile;
+}
+
+.card-premium:hover .background .line {
+    opacity: 1;
+    transition-duration: .15s;
+}
+
+.card-premium:hover .background .line:before {
+    transform: scaleX(1);
+}
+
+.card-premium:hover .background .line:after {
+    transform: scaleY(1);
+}
+
+.card-premium:hover .background .line-1:before,
+.card-premium:hover .background .line-1:after {
+    transition-delay: .0s;
+}
+
+.card-premium:hover .background .line-2:before,
+.card-premium:hover .background .line-2:after {
+    transition-delay: .15s;
+}
+
+.card-premium:hover .background .line-3:before,
+.card-premium:hover .background .line-3:after {
+    transition-delay: .3s;
+}
+
+/* Existing Card Integration */
+.stat-card,
+.skill-item,
+.project-card {
+    position: relative;
+    z-index: 1;
+}
+
+.stat-card *,
+.skill-item *,
+.project-card * {
+    position: relative;
+    z-index: 2;
 }
 
 section {

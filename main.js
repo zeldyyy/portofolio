@@ -47,3 +47,36 @@ menuBtn?.addEventListener('click', () => {
     // We can implement a full screen overlay or a simple dropdown
     alert('Mobile menu feature is being polished!');
 });
+
+// Meteor Effect Spawning
+function createMeteor() {
+    const container = document.getElementById('meteor-container');
+    if (!container) return;
+
+    const meteor = document.createElement('div');
+    meteor.classList.add('meteor');
+
+    // Randomize position and animation properties
+    const startX = Math.random() * window.innerWidth;
+    const duration = Math.random() * 2 + 3; // 3-5 seconds
+    const delay = Math.random() * 5; // 0-5s delay
+
+    meteor.style.left = `${startX}px`;
+    meteor.style.animationDuration = `${duration}s`;
+    meteor.style.animationDelay = `${delay}s`;
+
+    container.appendChild(meteor);
+
+    // Remove meteor after animation finishes to prevent DOM bloat
+    setTimeout(() => {
+        meteor.remove();
+    }, (duration + delay) * 1000);
+}
+
+// Spawn 3 meteors initially and keep them cycling
+for (let i = 0; i < 3; i++) {
+    createMeteor();
+}
+
+// Spawning occasionally to keep the activity
+setInterval(createMeteor, 4000);
